@@ -1,0 +1,1084 @@
+{
+  "components": {
+    "1": {
+      "id": "1",
+      "type": "lab.flow.Loop",
+      "children": [
+        "2"
+      ],
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "Word",
+            "type": "string"
+          },
+          {
+            "name": "YesNo",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "我 (mig)",
+            "yes"
+          ],
+          [
+            "羊 (far)",
+            "yes"
+          ],
+          [
+            "狗 (hund)",
+            "yes"
+          ],
+          [
+            "泥 (ní (mud))",
+            "no"
+          ],
+          [
+            "吹 (Chui (blos))",
+            "no"
+          ],
+          [
+            "南 (nan)",
+            "no"
+          ]
+        ]
+      },
+      "sample": {
+        "mode": "draw-shuffle"
+      },
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Mandarin",
+      "_tab": "Content",
+      "skipCondition": "",
+      "skip": false,
+      "tardy": false
+    },
+    "2": {
+      "id": "2",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "3",
+        "21",
+        "11"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Trial"
+    },
+    "3": {
+      "id": "3",
+      "type": "lab.canvas.Screen",
+      "content": [
+        {
+          "type": "i-text",
+          "version": "4.3.1",
+          "originX": "center",
+          "originY": "center",
+          "left": 0,
+          "top": 0,
+          "width": 18.05,
+          "height": 36.16,
+          "fill": "black",
+          "stroke": null,
+          "strokeWidth": 1,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "round",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 1,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "text": "+",
+          "fontSize": 32,
+          "fontWeight": "normal",
+          "fontFamily": "serif",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textAlign": "center",
+          "textBackgroundColor": "",
+          "charSpacing": 0,
+          "id": "13",
+          "styles": {}
+        }
+      ],
+      "viewport": [
+        800,
+        600
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Fixation Cross",
+      "_tab": "Behavior",
+      "timeout": "500"
+    },
+    "4": {
+      "id": "4",
+      "type": "lab.canvas.Screen",
+      "content": [],
+      "viewport": [
+        800,
+        600
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Inter-Stimulus Interval",
+      "_tab": "Behavior",
+      "timeout": "1000"
+    },
+    "6": {
+      "id": "6",
+      "type": "lab.canvas.Screen",
+      "content": [
+        {
+          "type": "i-text",
+          "version": "4.3.1",
+          "originX": "center",
+          "originY": "center",
+          "left": 0,
+          "top": 0,
+          "width": 18.05,
+          "height": 36.16,
+          "fill": "black",
+          "stroke": null,
+          "strokeWidth": 1,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "round",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 1,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "text": "+",
+          "fontSize": 32,
+          "fontWeight": "normal",
+          "fontFamily": "serif",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textAlign": "center",
+          "textBackgroundColor": "",
+          "charSpacing": 0,
+          "id": "13",
+          "styles": {}
+        }
+      ],
+      "viewport": [
+        800,
+        600
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Fixation Cross",
+      "_tab": "Behavior",
+      "timeout": "500"
+    },
+    "7": {
+      "id": "7",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "6",
+        "18",
+        "4"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Trial",
+      "_tab": "Content",
+      "shuffle": false
+    },
+    "8": {
+      "id": "8",
+      "type": "lab.flow.Loop",
+      "children": [
+        "7"
+      ],
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "Word",
+            "type": "string"
+          },
+          {
+            "name": "YesNo",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "æble",
+            "yes"
+          ],
+          [
+            "mor",
+            "yes"
+          ],
+          [
+            "lup",
+            "yes"
+          ],
+          [
+            "ulp",
+            "no"
+          ],
+          [
+            "mok",
+            "no"
+          ],
+          [
+            "ælbe",
+            "no"
+          ]
+        ]
+      },
+      "sample": {
+        "mode": "draw-shuffle",
+        "n": ""
+      },
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [],
+      "title": "Dansk",
+      "_tab": "Content",
+      "skipCondition": "",
+      "skip": false,
+      "tardy": false
+    },
+    "9": {
+      "id": "9",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "1"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "MN",
+      "_tab": "Behavior",
+      "skipCondition": "${ this.state.Sprog !== \"Mandarin\" }",
+      "tardy": true
+    },
+    "10": {
+      "id": "10",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "31"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "MR",
+      "_tab": "Behavior",
+      "skipCondition": "${ this.state.Sprog !== \"Marathi\" }",
+      "tardy": true
+    },
+    "11": {
+      "id": "11",
+      "type": "lab.canvas.Screen",
+      "content": [],
+      "viewport": [
+        800,
+        600
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Inter-Stimulus Interval",
+      "_tab": "Behavior",
+      "timeout": "1000"
+    },
+    "12": {
+      "id": "12",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "8"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "DK",
+      "_tab": "Content",
+      "correctResponse": "",
+      "tardy": true,
+      "skipCondition": "${ this.state.Sprog !== \"Dansk\" }"
+    },
+    "14": {
+      "id": "14",
+      "type": "lab.html.Form",
+      "content": "  <main class=\"content-horizontal-center content-vertical-center\">\n   <form id=sprogValg>\n      <h1> Choose your language and press <kbd style=\"width: 155px; font-size: xx-large\">Continue</kbd>: <br> </h1>\n      <div class= \"content-horizontal-center content-vertical-center\">\n        <div style=\"width: 200px; text-align-last: left; font-size: 2rem\">\n        <p ><input type=\"radio\" name=\"Sprog\" value=\"Dansk\" style=\"height:35px; width:35px\"> Dansk</p>\n        <p ><input type=\"radio\" name=\"Sprog\" value=\"Marathi\" style=\"height:35px; width:35px\"> Marathi</p>\n        <p ><input type=\"radio\" name=\"Sprog\" value=\"Mandarin\" style=\"height:35px; width:35px\"> Mandarin</p>\n        <button type=\"submit\" style=\"width: 155px; font-size: xx-large\">\n          Continue\n        </button>\n      </div> \n   </form>\n  </main>",
+      "scrollTop": true,
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Form",
+      "_tab": "Content"
+    },
+    "15": {
+      "id": "15",
+      "type": "lab.html.Screen",
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Thanks",
+      "content": "<main>\r\n    <header>\r\n      <h1> Weeeeeeeeeeeeeeeeeeeeeeeeee </h1>\r\n    </header>\r\n</main>\r\n\r\n"
+    },
+    "16": {
+      "id": "16",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "12",
+        "10",
+        "9",
+        "15"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Sequence"
+    },
+    "17": {
+      "id": "17",
+      "type": "lab.html.Screen",
+      "files": [],
+      "responses": [
+        {
+          "label": "Continue",
+          "event": "click",
+          "target": "",
+          "filter": "0"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Introduction",
+      "content": "\r\n<main class=\"content-horizontal-center content-vertical-center\">\r\n  <div>\r\n       <h1>Welcome to this study!</h1>\r\n    <p> In the following task, you will be asked to judge whether a word is real or not real. </p> \r\n      <p> If the word is real press the \"y\" button on the screen. If the word is not real press the \"x\" button on the screen. </p> <br>\r\n     <p> <strong>Please respond as fast as you can!</strong></p> <br>\r\n  </div>\r\n</main>\r\n\r\n<footer>\r\n  Push here to continue\r\n</footer>\r\n  ",
+      "_tab": "Content"
+    },
+    "18": {
+      "id": "18",
+      "type": "lab.html.Screen",
+      "files": [],
+      "responses": [
+        {
+          "label": "yes",
+          "event": "click",
+          "target": "button#yes",
+          "filter": "0"
+        },
+        {
+          "label": "no",
+          "event": "click",
+          "target": "button#no",
+          "filter": "0"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Stimulus",
+      "content": "<main style=\"font-family: sans-serif; font-weight: bold; font-size: 4rem\"  class=\"content-horizontal-center content-vertical-center\">\r\n  <div>\r\n    <p>${ parameters.Word }</p>\r\n  </div>\r\n</main>\r\n<div class=\"content-horizontal-center content-vertical-center\">\r\n  <footer style=\"width: 1080px\" class=\"content-horizontal-space-around content-vertical-center\">\r\n    <div >\r\n      <button type=\"submit\" value=\"yes\" style=\"width: 500px; height: 300px; font-size: xx-large; background-color: green; color: green\" id=\"yes\">\r\n      </button>\r\n    </div>\r\n    <div>\r\n      <button type=\"submit\" value=\"no\" style=\"width: 500px; height: 300px; font-size: xx-large; background-color: red; color: red\" id=\"no\">\r\n      </button>\r\n    </div>\r\n  </footer>\r\n</div>\r\n",
+      "_tab": "Content",
+      "correctResponse": "${ this.parameters.YesNo }"
+    },
+    "21": {
+      "id": "21",
+      "type": "lab.html.Screen",
+      "files": [],
+      "responses": [
+        {
+          "label": "yes",
+          "event": "click",
+          "target": "button#yes",
+          "filter": "0"
+        },
+        {
+          "label": "no",
+          "event": "click",
+          "target": "button#no",
+          "filter": "0"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Stimulus",
+      "content": "<main style=\"font-family: sans-serif; font-weight: bold; font-size: 4rem\"  class=\"content-horizontal-center content-vertical-center\">\r\n  <div>\r\n    <p>${ parameters.Word }</p>\r\n  </div>\r\n</main>\r\n<div class=\"content-horizontal-center content-vertical-center\">\r\n  <footer style=\"width: 1080px\" class=\"content-horizontal-space-around content-vertical-center\">\r\n    <div >\r\n      <button type=\"submit\" value=\"yes\" style=\"width: 500px; height: 300px; font-size: xx-large; background-color: green; color: green\" id=\"yes\">\r\n      </button>\r\n    </div>\r\n    <div>\r\n      <button type=\"submit\" value=\"no\" style=\"width: 500px; height: 300px; font-size: xx-large; background-color: red; color: red\" id=\"no\">\r\n      </button>\r\n    </div>\r\n  </footer>\r\n</div>\r\n",
+      "_tab": "Content",
+      "correctResponse": "${ this.parameters.YesNo }"
+    },
+    "22": {
+      "id": "22",
+      "type": "lab.html.Screen",
+      "files": [],
+      "responses": [
+        {
+          "label": "yes",
+          "event": "click",
+          "target": "button#yes",
+          "filter": "0"
+        },
+        {
+          "label": "no",
+          "event": "click",
+          "target": "button#no",
+          "filter": "0"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Stimulus",
+      "content": "<main style=\"font-family: sans-serif; font-weight: bold; font-size: 4rem\"  class=\"content-horizontal-center content-vertical-center\">\r\n  <div>\r\n    <p>${ parameters.Word }</p>\r\n  </div>\r\n</main>\r\n<div class=\"content-horizontal-center content-vertical-center\">\r\n  <footer style=\"width: 1080px\" class=\"content-horizontal-space-around content-vertical-center\">\r\n    <div >\r\n      <button type=\"submit\" value=\"yes\" style=\"width: 500px; height: 300px; font-size: xx-large; background-color: green; color: green\" id=\"yes\">\r\n      </button>\r\n    </div>\r\n    <div>\r\n      <button type=\"submit\" value=\"no\" style=\"width: 500px; height: 300px; font-size: xx-large; background-color: red; color: red\" id=\"no\">\r\n      </button>\r\n    </div>\r\n  </footer>\r\n</div>\r\n",
+      "_tab": "Content",
+      "correctResponse": "${ this.parameters.YesNo }"
+    },
+    "31": {
+      "id": "31",
+      "type": "lab.flow.Loop",
+      "children": [
+        "32"
+      ],
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "Word",
+            "type": "string"
+          },
+          {
+            "name": "YesNo",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "आई (mor)",
+            "yes"
+          ],
+          [
+            "घर (hus)",
+            "yes"
+          ],
+          [
+            "मी (mig)",
+            "yes"
+          ],
+          [
+            "ईय (E?)",
+            "no"
+          ],
+          [
+            "लीमु (Lemu?)",
+            "no"
+          ],
+          [
+            "डूर्या (Durya?)",
+            "no"
+          ]
+        ]
+      },
+      "sample": {
+        "mode": "draw-shuffle"
+      },
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Marathi (Devanagari)",
+      "_tab": "Content",
+      "skipCondition": "",
+      "skip": false,
+      "tardy": false
+    },
+    "32": {
+      "id": "32",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "22",
+        "33",
+        "35"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Trial",
+      "_tab": "Content",
+      "shuffle": false
+    },
+    "33": {
+      "id": "33",
+      "type": "lab.canvas.Screen",
+      "content": [
+        {
+          "type": "i-text",
+          "version": "4.3.1",
+          "originX": "center",
+          "originY": "center",
+          "left": 0,
+          "top": 0,
+          "width": 18.05,
+          "height": 36.16,
+          "fill": "black",
+          "stroke": null,
+          "strokeWidth": 1,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "round",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 1,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "text": "+",
+          "fontSize": 32,
+          "fontWeight": "normal",
+          "fontFamily": "serif",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textAlign": "center",
+          "textBackgroundColor": "",
+          "charSpacing": 0,
+          "id": "13",
+          "styles": {}
+        }
+      ],
+      "viewport": [
+        800,
+        600
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Fixation Cross",
+      "_tab": "Behavior",
+      "timeout": "500"
+    },
+    "35": {
+      "id": "35",
+      "type": "lab.canvas.Screen",
+      "content": [],
+      "viewport": [
+        800,
+        600
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Inter-Stimulus Interval",
+      "_tab": "Behavior",
+      "timeout": "1000"
+    },
+    "root": {
+      "id": "root",
+      "title": "root",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "17",
+        "14",
+        "16"
+      ],
+      "parameters": [],
+      "plugins": [
+        {
+          "type": "lab.plugins.Metadata"
+        }
+      ],
+      "metadata": {
+        "title": "",
+        "description": "",
+        "repository": "",
+        "contributors": ""
+      }
+    }
+  },
+  "version": [
+    20,
+    2,
+    4
+  ],
+  "files": {
+    "files": {
+      "index.html": {
+        "content": "data:text/html,%3C!doctype%20html%3E%0A%3Chtml%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22utf-8%22%3E%0A%20%20%3Ctitle%3EExperiment%3C%2Ftitle%3E%0A%20%20%3C!--%20viewport%20setup%20--%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%20%20%3C!--%20lab.js%20library%20and%20experiment%20code%20--%3E%0A%20%20%24%7B%20header%20%7D%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3C!--%20If%20you'd%20rather%20have%20a%20container%20with%20a%20fixed%20width%0A%20%20%20%20%20%20%20and%20variable%20height%2C%20try%20removing%20the%20fullscreen%20class%20below%20--%3E%0A%20%20%3Cdiv%20class%3D%22container%20fullscreen%22%20data-labjs-section%3D%22main%22%3E%0A%20%20%20%20%3Cmain%20class%3D%22content-vertical-center%20content-horizontal-center%22%3E%0A%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%3Ch2%3ELoading%20Experiment%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EThe%20experiment%20is%20loading%20and%20should%20start%20in%20a%20few%20seconds%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fmain%3E%0A%20%20%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A",
+        "source": "library"
+      },
+      "style.css": {
+        "content": "data:text/css,%2F*%20Please%20define%20your%20custom%20styles%20here%20*%2F",
+        "source": "library"
+      }
+    },
+    "bundledFiles": {
+      "lib/lab.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.fallback.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.css": {
+        "type": "text/css"
+      },
+      "lib/loading.svg": {
+        "type": "image/svg+xml"
+      }
+    }
+  }
+}
