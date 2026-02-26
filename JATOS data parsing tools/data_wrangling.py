@@ -180,9 +180,9 @@ def parse_jatos_data(raw):
     with jsonlines.open(raw) as reader:                            # make a "reader" variable with the lab.js data (which is stored in "JSON" format)
         for line in reader:                                        # loop through every line in the lab.js JSON data
             if i == 0:                                             # check if i equals zero. If it does, then
-                df = pd.DataFrame(line)                            # make a new pandas dataframe called "df" 
+                df = pd.DataFrame([line])                            # make a new pandas dataframe called "df" 
                 i += 1                                             # add 1 to i
             else:                                                  # if i does not equal zero 
-                df = pd.concat([df, pd.DataFrame(line)], ignore_index=True)           # get the next line of the json file, convert it to a dataframe, and stick it on the bottom of "df" 
+                df = pd.concat([df, pd.DataFrame([line])], ignore_index=True)           # get the next line of the json file, convert it to a dataframe, and stick it on the bottom of "df" 
     return df
 

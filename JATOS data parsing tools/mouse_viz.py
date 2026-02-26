@@ -6,17 +6,24 @@ This module contains functions to assist in organizing and plotting data from ou
 
 
 """
+# --- Constants ---
+FONT_SIZE            = 18
+LINE_HEIGHT          = 25
+HORIZONTAL_PADDING   = 30
+VERTICAL_PADDING_TOP = 20
 
-
-import numpy as np
+import pathlib
+import jsonlines
 import pandas as pd
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 from PIL import ImageFont
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+from matplotlib import pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
+
+
 def get_participant_id(raw):
-    return raw.split('/')[-1].split('_')[0]
+    return pathlib.Path(raw).name.split('_')[0]
 
 def get_reading_trials(df):
     df_reading = df[df['trial_type'] == 'reading']
@@ -49,11 +56,15 @@ def load_font(size=18):
     return ImageFont.load_default()
 
 
-def get_word_positions(text, canvas_width, font):
+def get_word_positions(text, canvas_width, font,
+                       horizontal_padding=HORIZONTAL_PADDING,
+                       vertical_padding_top=VERTICAL_PADDING_TOP,
+                       line_height=LINE_HEIGHT):
+
     """Calculate pixel positions for each word in the text."""
-    text_start_x = HORIZONTAL_PADDING // 2
-    text_start_y = VERTICAL_PADDING_TOP + 10
-    available_width = canvas_width - HORIZONTAL_PADDING
+    text_start_x = horizontal_padding // 2
+    text_start_y = vertical_padding_top + 10
+    available_width = canvas_width - horizontal_padding
     words = text.split(' ')
     word_positions = []
     current_line_text = ''
@@ -94,15 +105,20 @@ def get_word_positions(text, canvas_width, font):
 def get_text_content(df_reading, trial_num=0):
     return df_reading.iloc[trial_num]['text_content']
 
-def compute_word_durations(df_reading, canvas_width=canvas_width, text=text, word_positions=word_positions, x_tolerance=5, y_tolerance=15):
+def compute_word_durations(df_reading, canvas_width=None, text=None, word_positions=None, x_tolerance=5, y_tolerance=15):
     """
     Compute duration spent on each word from mouse tracking data.
     Returns a DataFrame with word positions and durations.
     """
     
-    tracking = mouse_data
-    canvas_width = canvas_width
-    text = text
+    if canvas_width is None:
+        raise ValueError("canvas_width must be provided.")
+    if text is None:
+        raise ValueError("text must be provided.")
+    if word_positions is None:
+        raise ValueError("word_positions must be provided.")
+
+    tracking = get_mouse_data(df_reading)
     word_positions = word_positions
     word_durations = {i: 0.0 for i in range(len(word_positions))}
 
@@ -149,7 +165,7 @@ def compute_word_durations(df_reading, canvas_width=canvas_width, text=text, wor
     return pd.DataFrame(data)
 
 
-def build_data(raw_files, font):
+def build_data(raw_files, font=None):
     """
     Builds the data list from a list of raw JATOS .txt file paths.
 
@@ -165,18 +181,24 @@ def build_data(raw_files, font):
     list of dict
         One dictionary per trial, across all participants and files.
     """
+
+    if font is None:
+        font = load_font()  # uses load_font() function from this module
+
     data = []
 
     for raw in raw_files:
-        # Load the raw file into a DataFrame
-        i = 0
         with jsonlines.open(raw) as reader:
-            for line in reader:
-                if i == 0:
-                    df = pd.DataFrame(line)
-                    i += 1
-                else:
-                    df = pd.concat([df, pd.DataFrame(line)])
+            lines = [line for line in reader]
+
+        # Format 1: single line containing a list of trial dicts (e.g. 6138_2.txt)
+        if len(lines) == 1 and isinstance(lines[0], list):
+            df = pd.DataFrame(lines[0])
+
+        # Format 2: one trial dict per line (e.g. 6138_3.txt)
+        else:
+            df = pd.DataFrame(lines)
+
 
         participant_id = get_participant_id(raw)
         reading_trials = get_reading_trials(df)
@@ -200,3 +222,78 @@ def build_data(raw_files, font):
             })
 
     return data
+
+
+def plot_text_heatmap(participant, title=None, figsize=(14, 6)):
+    """
+    Visual heatmap showing the text with words colored by duration.
+    Reads directly from a participant dictionary in the `data` list.
+    """
+    df           = participant['word_durations']
+    canvas_width  = participant['canvas_width']
+    canvas_height = participant['canvas_height']
+
+    if title is None:
+        text = participant['text_content']
+        text_preview = text[:40] + '...' if len(text) > 40 else text
+        title = f"{participant['participant_id']} - Trial {participant['trial_num']}\n\"{text_preview}\""
+
+    fig, ax = plt.subplots(figsize=figsize)
+
+
+    ax.set_xlim(0, canvas_width)
+    ax.set_ylim(canvas_height, 0)
+
+    # Calculate the actual extent of the text
+    #max_y = df['y_position'].max() + 30  # add a small bottom margin
+
+    #ax.set_xlim(0, canvas_width)
+    #ax.set_ylim(max_y, 0)  # use text extent instead of canvas_height
+    #ax.set_facecolor('#f5f5f5')
+
+
+    colors_cmap = ['#ffffff', '#fff3e0', '#ffcc80', '#ff9800', '#f44336', '#b71c1c']
+    cmap = LinearSegmentedColormap.from_list('duration', colors_cmap)
+
+    max_dur = df['duration_ms'].max()
+    min_dur = df['duration_ms'].min()
+    dur_range = max_dur - min_dur if max_dur != min_dur else 1
+
+    for _, row in df.iterrows():
+        norm_dur = (row['duration_ms'] - min_dur) / dur_range
+        color = cmap(norm_dur)
+
+        rect = plt.Rectangle(
+            (row['x_start'], row['y_position'] - 20),
+            row['x_end'] - row['x_start'],
+            24,
+            color=color,
+            zorder=1
+        )
+        ax.add_patch(rect)
+
+        ax.text(
+            (row['x_start'] + row['x_end']) / 2,
+            row['y_position'],
+            row['word'],
+            ha='center', va='center',
+            fontsize=9, zorder=2
+        )
+
+    sm = plt.cm.ScalarMappable(cmap=cmap,
+                                norm=plt.Normalize(vmin=min_dur, vmax=max_dur))
+    sm.set_array([])
+    #plt.colorbar(sm, ax=ax, label='Duration (ms)')
+    #plt.colorbar(sm, ax=ax, label='Duration (ms)', location='right', shrink=0.8, fraction=0.02, pad=0.02)
+    divider = make_axes_locatable(ax)
+    cax = divider.append_axes("bottom", size="5%", pad=-0.05)
+    plt.colorbar(sm, cax=cax, label='Duration (ms)', orientation='horizontal')
+
+
+
+
+    ax.set_title(title)
+    ax.axis('off')
+    plt.tight_layout()
+
+    return fig
