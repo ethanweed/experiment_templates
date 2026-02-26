@@ -7,7 +7,13 @@ This module contains functions to assist in organizing and plotting data from ou
 
 """
 
+
+import numpy as np
+import pandas as pd
 from PIL import ImageFont
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from matplotlib.colors import LinearSegmentedColormap
 
 def get_participant_id(raw):
     return raw.split('/')[-1].split('_')[0]
@@ -141,3 +147,56 @@ def compute_word_durations(df_reading, canvas_width=canvas_width, text=text, wor
         })
 
     return pd.DataFrame(data)
+
+
+def build_data(raw_files, font):
+    """
+    Builds the data list from a list of raw JATOS .txt file paths.
+
+    Args:
+        raw_files : list of str
+            List of file paths to raw JATOS .txt data files.
+
+    font : PIL ImageFont
+        Font object used for computing word positions.
+
+    Returns
+    -------
+    list of dict
+        One dictionary per trial, across all participants and files.
+    """
+    data = []
+
+    for raw in raw_files:
+        # Load the raw file into a DataFrame
+        i = 0
+        with jsonlines.open(raw) as reader:
+            for line in reader:
+                if i == 0:
+                    df = pd.DataFrame(line)
+                    i += 1
+                else:
+                    df = pd.concat([df, pd.DataFrame(line)])
+
+        participant_id = get_participant_id(raw)
+        reading_trials = get_reading_trials(df)
+
+        for trial in range(len(reading_trials)):
+            canvas_width, canvas_height = get_canvas_dimensions(reading_trials, trial_num=trial)
+            text_content               = get_text_content(reading_trials, trial_num=trial)
+            mouse_data                 = get_mouse_data(reading_trials, trial_num=trial)
+            word_positions             = get_word_positions(text_content, canvas_width, font)
+            word_durations             = compute_word_durations(reading_trials, canvas_width, text_content, word_positions)
+
+            data.append({
+                'participant_id': participant_id,
+                'trial_num':      trial,
+                'text_content':   text_content,
+                'mouse_data':     mouse_data,
+                'canvas_width':   canvas_width,
+                'canvas_height':  canvas_height,
+                'word_positions': word_positions,
+                'word_durations': word_durations,
+            })
+
+    return data
