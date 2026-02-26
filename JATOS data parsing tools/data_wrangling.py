@@ -138,7 +138,7 @@ def parse_labjs_data(raw, remove_meta_data = True):
 
     """
 
-# modify to simply load as a text file first, to check if it is a labjs file before trying to parse it with jsonlines. This should prevent the function from crashing if the file is not a labjs file, and allow it to return a more informative error message instead.
+
 
     with open(raw, 'r') as f:
         first_line = f.readline()
@@ -157,4 +157,32 @@ def parse_labjs_data(raw, remove_meta_data = True):
                 df = pd.concat([df, pd.DataFrame(line)], ignore_index=True)           # get the next line of the json file, convert it to a dataframe, and stick it on the bottom of "df"                                           # add 1 to i
         print('labjs data found and imported 👍')
         return(df.drop(index=0) if remove_meta_data else df)          # after looping through all lines, return the dataframe "df", but drop the first line (index 0) if remove_meta_data is True. Otherwise, return the full dataframe with meta-data included.
+
+import pandas as pd
+import jsonlines
+
+def parse_jatos_data(raw):
+    """
+    Take the data from a non-lab.js experiment run on JATOS, which is exported in a weird,
+    pseudo-JSON format, and put it in a pandas dataframe.
+
+    Args: 
+        raw: (string) Path to text file with data
+        
+    
+    Usage:
+        df = data_wrangling.parse_jatos_data(raw)
+    """
+
+
+    i = 0                                                          # set counter variable "i" to zero
+
+    with jsonlines.open(raw) as reader:                            # make a "reader" variable with the lab.js data (which is stored in "JSON" format)
+        for line in reader:                                        # loop through every line in the lab.js JSON data
+            if i == 0:                                             # check if i equals zero. If it does, then
+                df = pd.DataFrame(line)                            # make a new pandas dataframe called "df" 
+                i += 1                                             # add 1 to i
+            else:                                                  # if i does not equal zero 
+                df = pd.concat([df, pd.DataFrame(line)], ignore_index=True)           # get the next line of the json file, convert it to a dataframe, and stick it on the bottom of "df" 
+    return df
 
