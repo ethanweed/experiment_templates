@@ -1,0 +1,21 @@
+/* Hide the default submit button position (right-aligned) and re-style it */
+.labjs-submit-button,
+button[type="submit"] {
+  display: block !important;
+  width: 100% !important;
+  max-width: 300px !important;
+  margin: 24px auto 10px auto !important;
+  padding: 14px 20px !important;
+  font-size: 18px !important;
+  background-color: #4a90d9 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  float: none !important;
+  text-align: center !important;
+}
+
+button[type="submit"]:hover {
+  background-color: #357abd !important;
+}

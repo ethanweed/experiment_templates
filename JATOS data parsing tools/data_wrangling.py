@@ -158,8 +158,7 @@ def parse_labjs_data(raw, remove_meta_data = True):
         print('labjs data found and imported 👍')
         return(df.drop(index=0) if remove_meta_data else df)          # after looping through all lines, return the dataframe "df", but drop the first line (index 0) if remove_meta_data is True. Otherwise, return the full dataframe with meta-data included.
 
-import pandas as pd
-import jsonlines
+
 
 def parse_jatos_data(raw):
     """
