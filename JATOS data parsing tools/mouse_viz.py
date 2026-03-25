@@ -29,9 +29,13 @@ def get_reading_trials(df):
     df_reading = df[df['trial_type'] == 'reading']
     return df_reading
 
-def get_mouse_data(df_reading,trial_num=0):
-    mouse_data = df_reading[df_reading['mouse_tracking_data'].apply(len) > 0]
-    return mouse_data["mouse_tracking_data"].iloc[trial_num]
+def get_mouse_data(df_reading, trial_num=0):
+    trial = df_reading.iloc[trial_num]
+    mouse_tracking = trial['mouse_tracking_data']
+    if len(mouse_tracking) == 0:
+        return []
+    return mouse_tracking
+
 
 def get_canvas_dimensions(df_reading, trial_num=0):
     trial = df_reading.iloc[trial_num]
@@ -105,7 +109,8 @@ def get_word_positions(text, canvas_width, font,
 def get_text_content(df_reading, trial_num=0):
     return df_reading.iloc[trial_num]['text_content']
 
-def compute_word_durations(df_reading, canvas_width=None, text=None, word_positions=None, x_tolerance=5, y_tolerance=15):
+
+def compute_word_durations(df_reading, canvas_width=None, text=None, word_positions=None, trial_num=0, x_tolerance=5, y_tolerance=15):
     """
     Compute duration spent on each word from mouse tracking data.
     Returns a DataFrame with word positions and durations.
@@ -118,7 +123,7 @@ def compute_word_durations(df_reading, canvas_width=None, text=None, word_positi
     if word_positions is None:
         raise ValueError("word_positions must be provided.")
 
-    tracking = get_mouse_data(df_reading)
+    tracking = get_mouse_data(df_reading, trial_num=trial_num)
     word_positions = word_positions
     word_durations = {i: 0.0 for i in range(len(word_positions))}
 
@@ -208,7 +213,9 @@ def build_data(raw_files, font=None):
             text_content               = get_text_content(reading_trials, trial_num=trial)
             mouse_data                 = get_mouse_data(reading_trials, trial_num=trial)
             word_positions             = get_word_positions(text_content, canvas_width, font)
-            word_durations             = compute_word_durations(reading_trials, canvas_width, text_content, word_positions)
+            word_durations            = compute_word_durations(reading_trials, canvas_width, text_content,
+                                        word_positions, trial_num=trial)
+
 
             data.append({
                 'participant_id': participant_id,
